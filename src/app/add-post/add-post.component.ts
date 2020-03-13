@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormControlName } from '@angular/forms';
 import { PostPayload } from './post-payload';
-import { HttpClient } from '@angular/common/http';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router';
 
@@ -37,7 +36,7 @@ export class AddPostComponent implements OnInit {
   this.postPayload.content = this.addPostForm.get('content').value;
 
   this.postService.addPost(this.postPayload).subscribe(data => {
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/home')
   }, error => {
     console.log('Failure Response');
   }) 

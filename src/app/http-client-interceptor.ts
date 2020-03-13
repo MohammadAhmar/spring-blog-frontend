@@ -16,8 +16,15 @@ export class HttpClientInterceptor implements HttpInterceptor {
     console.log('jwt token ' + token);
     if (token) {
       const cloned = req.clone({
-        headers: req.headers.set("Authorization",
-          "Bearer " + token)
+        withCredentials: true,
+        setHeaders: {
+          
+          "Authorization": "Bearer " + token
+        }
+        
+        
+        
+          
       });
 
       return next.handle(cloned);
